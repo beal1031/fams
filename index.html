@@ -21,11 +21,8 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <script type="text/babel" src="i18n.js"></script>
-  <script type="text/babel" src="events.js"></script>
   <script type="text/babel" src="fb-feed.js"></script>
   <script type="text/babel" src="components/Logo.jsx"></script>
-  <script type="text/babel" src="components/Button.jsx"></script>
-  <script type="text/babel" src="components/Field.jsx"></script>
   <script type="text/babel" src="site.jsx"></script>
 
   <script type="text/babel">
@@ -33,13 +30,6 @@
 
     function App() {
       const [lang, setLang] = useState("lb");
-      const [registerOpen, setRegisterOpen] = useState(false);
-      const [prefilledId, setPrefilledId] = useState(null);
-
-      const openRegister = (id) => {
-        setPrefilledId(id);
-        setRegisterOpen(true);
-      };
 
       return (
         <div data-screen-label="FMS Site">
@@ -47,12 +37,10 @@
           <Hero lang={lang} />
           <About lang={lang} />
           <Work lang={lang} />
-          <Events lang={lang} openRegister={openRegister} />
           <News lang={lang} />
           <Gallery lang={lang} />
           <Monday lang={lang} />
           <SiteFooter lang={lang} />
-          <RegisterModal lang={lang} open={registerOpen} prefilledId={prefilledId} onClose={() => setRegisterOpen(false)} />
         </div>
       );
     }

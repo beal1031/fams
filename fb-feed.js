@@ -1,19 +1,16 @@
 /* global */
 /* =============================================================
-   Facebook Graph API — mock layer
+   Facebook data layer
    -------------------------------------------------------------
-   The shape of every object below matches the real Graph API
-   v19.0 response for a Page Feed / Photos edge. When the site
-   is later wired to the live API (via a small server proxy that
-   adds the page access token), only the body of `fetchFacebook`
-   needs to change — the components keep working unchanged.
+   fetchFacebook() reads ./fb-data.json, which is committed to
+   the repo and refreshed daily by GitHub Actions. The token
+   never touches client code.
 
-   Real endpoints this mimics:
-     GET /v19.0/{page-id}/posts
-        ?fields=id,message,created_time,full_picture,permalink_url,
-                attachments{media_type,media,subattachments,target,url}
-     GET /v19.0/{page-id}/photos?type=uploaded
-        ?fields=id,name,created_time,images,link,album
+   fb-data.json shape: { posts: [...], photos: [...], updated_at: "..." }
+   Each item matches the Graph API v19.0 field set.
+
+   Falls back to inline mock data when fb-data.json is absent
+   (local development before the workflow has run).
    ============================================================= */
 
 const FB_PAGE_ID    = "fraenamammenschetter";
@@ -225,7 +222,25 @@ const FB_PHOTOS_RESPONSE = {
   },
 };
 
+let _fbDataCache = null;
+
 async function fetchFacebook(path) {
+  if (!_fbDataCache) {
+    try {
+      const r = await fetch("./fb-data.json");
+      if (r.ok) {
+        _fbDataCache = await r.json();
+      }
+    } catch (_) { /* file missing — use mock fallback below */ }
+  }
+
+  if (_fbDataCache) {
+    if (path.includes("/posts"))  return { data: _fbDataCache.posts  || [] };
+    if (path.includes("/photos")) return { data: _fbDataCache.photos || [] };
+    return { data: [] };
+  }
+
+  // Local dev fallback — mock data
   await new Promise((r) => setTimeout(r, 380));
   if (path.includes("/posts"))  return structuredClone(FB_POSTS_RESPONSE);
   if (path.includes("/photos")) return structuredClone(FB_PHOTOS_RESPONSE);

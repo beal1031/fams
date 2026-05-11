@@ -34,7 +34,6 @@ function SiteHeader({ lang, setLang }) {
 
   const items = [
     { id: "about", label: t.about },
-    { id: "events", label: t.events },
     { id: "news", label: t.news },
     { id: "monday", label: t.monday },
     { id: "contact", label: t.contact },
@@ -232,7 +231,7 @@ function Hero({ lang }) {
             color: "var(--fg-2)", maxWidth: "56ch", margin: 0,
           }}>{t.lead}</p>
           <div style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
-            <button onClick={() => goto("events")} style={{
+            <button onClick={() => goto("news")} style={{
               background: "var(--fms-sage-700)", color: "var(--fms-cream-100)",
               border: 0, padding: "13px 24px", borderRadius: 999,
               fontFamily: "var(--font-serif)", fontSize: 16, fontWeight: 600, cursor: "pointer",
@@ -369,106 +368,6 @@ function Work({ lang }) {
                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================
-// Events
-// ============================================================
-function Events({ lang, openRegister }) {
-  const t = I18N[lang].events;
-  const monthAbbr = {
-    lb: ["Jan","Feb","Mäe","Abr","Mee","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],
-    de: ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],
-    fr: ["jan","fév","mar","avr","mai","jun","jul","aoû","sep","oct","nov","déc"],
-    en: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
-  }[lang];
-
-  return (
-    <section id="events" style={{ padding: "64px 32px", scrollMarginTop: 80 }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-        <div className="fms-eyebrow" style={{ color: "var(--fms-terracotta-700)" }}>{t.eyebrow}</div>
-        <h2 style={{
-          fontFamily: "var(--font-serif)", fontWeight: 600,
-          fontSize: 38, lineHeight: 1.1, letterSpacing: "-0.015em",
-          color: "var(--fms-sage-800)", margin: "12px 0 12px", maxWidth: "20ch",
-        }}>{t.title}</h2>
-        <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--fg-2)", maxWidth: "56ch", margin: "0 0 36px" }}>{t.lead}</p>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {FMS_EVENTS.map((e, i) => {
-            const c = e[lang];
-            const d = new Date(e.date);
-            return (
-              <article key={e.id} style={{
-                display: "grid",
-                gridTemplateColumns: "120px 160px 1fr auto",
-                gap: 24, alignItems: "center",
-                padding: "22px 0",
-                borderBottom: i < FMS_EVENTS.length - 1 ? "1px solid var(--border-1)" : "none",
-              }}>
-                {/* Date block */}
-                <div>
-                  <div className="fms-eyebrow" style={{ color: "var(--fms-sage-700)" }}>
-                    {monthAbbr[d.getMonth()]} {d.getFullYear()}
-                  </div>
-                  <div style={{
-                    fontFamily: "var(--font-serif)", fontSize: 56, fontWeight: 600,
-                    color: "var(--fms-sage-800)", lineHeight: 1, marginTop: 4, letterSpacing: "-0.02em",
-                  }}>{d.getDate()}</div>
-                </div>
-
-                {/* Photo */}
-                <div style={{
-                  width: 160, height: 110,
-                  borderRadius: "var(--radius-lg)", overflow: "hidden", background: "var(--bg-3)",
-                }}>
-                  <img src={e.photo} alt={e.photoAlt}
-                       style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                </div>
-
-                {/* Content */}
-                <div>
-                  <div className="fms-eyebrow" style={{ color: "var(--fms-terracotta-700)" }}>{c.eyebrow}</div>
-                  <h3 style={{
-                    fontFamily: "var(--font-serif)", fontSize: 22, fontWeight: 600,
-                    color: "var(--fms-sage-800)", margin: "6px 0 6px", letterSpacing: "-0.005em",
-                  }}>{c.title}</h3>
-                  <div style={{ fontSize: 14, color: "var(--fg-2)", marginBottom: 4 }}>
-                    <span style={{ fontWeight: 600, color: "var(--fg-1)" }}>{c.where}</span>
-                    {" · "}{c.when}
-                  </div>
-                  <div style={{ fontSize: 14, color: "var(--fg-3)", maxWidth: "60ch", lineHeight: 1.5 }}>{c.note}</div>
-                </div>
-
-                {/* CTA */}
-                <div>
-                  {e.canRegister ? (
-                    <button onClick={() => openRegister(e.id)} style={{
-                      background: "var(--fms-terracotta-500)", color: "var(--fms-cream-100)",
-                      border: 0, padding: "11px 20px", borderRadius: 999,
-                      fontFamily: "var(--font-serif)", fontSize: 14, fontWeight: 600, cursor: "pointer",
-                      whiteSpace: "nowrap",
-                      boxShadow: "var(--shadow-1)",
-                    }}>{t.register} →</button>
-                  ) : (
-                    <span style={{
-                      display: "inline-block",
-                      padding: "8px 14px",
-                      border: "1px solid var(--border-2)",
-                      borderRadius: 999,
-                      fontFamily: "var(--font-sans)", fontSize: 12, fontWeight: 600,
-                      color: "var(--fms-sage-700)",
-                      letterSpacing: "0.06em", textTransform: "uppercase",
-                    }}>{ {lb:"Stand", de:"Stand", fr:"Stand", en:"Stand"}[lang] }</span>
-                  )}
-                </div>
-              </article>
-            );
-          })}
         </div>
       </div>
     </section>
@@ -837,118 +736,6 @@ function Monday({ lang }) {
 }
 
 // ============================================================
-// Registration form modal
-// ============================================================
-function RegisterModal({ lang, open, prefilledId, onClose }) {
-  const t = I18N[lang].register;
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", event: prefilledId || "maerchen", people: "1", note: "" });
-
-  useEffect(() => {
-    if (open && prefilledId) setForm((f) => ({ ...f, event: prefilledId }));
-    if (open) setSubmitted(false);
-  }, [open, prefilledId]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  const upd = (k) => (e) => setForm({ ...form, [k]: e.target.value });
-
-  const eventOptions = FMS_EVENTS.filter((e) => e.canRegister).map((e) => ({
-    value: e.id,
-    label: `${e[lang].title} · ${new Date(e.date).toLocaleDateString(lang === "lb" ? "de-LU" : lang)}`,
-  }));
-
-  return (
-    <div onClick={onClose} style={{
-      position: "fixed", inset: 0, zIndex: 100,
-      background: "rgba(42,38,32,0.5)",
-      backdropFilter: "blur(4px)",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: 24,
-      animation: "fmsFade 240ms var(--ease-soft)",
-    }}>
-      <style>{`@keyframes fmsFade { from { opacity: 0 } to { opacity: 1 } }
-               @keyframes fmsRise { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }`}</style>
-      <div onClick={(e) => e.stopPropagation()} style={{
-        background: "var(--fms-paper)",
-        border: "1px solid var(--border-1)",
-        borderRadius: "var(--radius-xl)",
-        boxShadow: "var(--shadow-3)",
-        padding: "32px 36px",
-        width: "min(560px, 100%)",
-        maxHeight: "calc(100vh - 48px)",
-        overflowY: "auto",
-        animation: "fmsRise 380ms var(--ease-soft)",
-      }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
-          <div>
-            <div className="fms-eyebrow" style={{ color: "var(--fms-terracotta-700)" }}>{t.eyebrow}</div>
-            <h2 style={{
-              fontFamily: "var(--font-serif)", fontSize: 30, fontWeight: 600,
-              color: "var(--fms-sage-800)", margin: "8px 0 6px", letterSpacing: "-0.01em",
-            }}>{submitted ? t.thanks : t.title}</h2>
-          </div>
-          <button onClick={onClose} aria-label="Close" style={{
-            background: "transparent", border: "1px solid var(--border-2)",
-            width: 36, height: 36, borderRadius: 999,
-            fontSize: 20, color: "var(--fms-sage-700)", cursor: "pointer",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            lineHeight: 1, paddingBottom: 2,
-          }}>×</button>
-        </div>
-
-        {submitted ? (
-          <div>
-            <p style={{ fontSize: 17, color: "var(--fg-2)", lineHeight: 1.55, marginTop: 12 }}>
-              {{
-                lb: "Mir hu Är Umellung kritt a melden eis bei iech am Loop vun de nächsten Deeg.",
-                de: "Wir haben Ihre Anmeldung erhalten und melden uns in den nächsten Tagen bei Ihnen.",
-                fr: "Nous avons bien reçu votre inscription et reviendrons vers vous dans les prochains jours.",
-                en: "We've received your registration and will be in touch in the next few days.",
-              }[lang]}
-            </p>
-            <div style={{ marginTop: 20, display: "flex", gap: 10 }}>
-              <Button variant="secondary" onClick={() => setSubmitted(false)}>{t.back}</Button>
-              <Button variant="ghost" onClick={onClose}>{ {lb:"Zoumaachen",de:"Schließen",fr:"Fermer",en:"Close"}[lang] }</Button>
-            </div>
-          </div>
-        ) : (
-          <>
-            <p style={{ fontSize: 16, color: "var(--fg-2)", lineHeight: 1.5, margin: "8px 0 22px", maxWidth: "52ch" }}>{t.lead}</p>
-
-            <Field id="ev" label={t.labelEvent} value={form.event} onChange={upd("event")} options={eventOptions} />
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 100px", gap: 14 }}>
-              <Field id="n" label={t.labelName} required value={form.name} onChange={upd("name")} placeholder={t.placeholderName} />
-              <Field id="p" label={t.labelPeople} value={form.people} onChange={upd("people")}
-                options={["1","2","3","4","5"].map((n) => ({ value: n, label: n }))} />
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-              <Field id="e" label={t.labelEmail} required type="email" value={form.email} onChange={upd("email")} placeholder={t.placeholderEmail} />
-              <Field id="t" label={t.labelPhone} value={form.phone} onChange={upd("phone")} placeholder={t.placeholderPhone} />
-            </div>
-            <Field id="m" label={t.labelNote} multiline value={form.note} onChange={upd("note")} />
-
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 16 }}>
-              <div style={{ fontSize: 12, color: "var(--fg-3)", maxWidth: "44ch", lineHeight: 1.45 }}>{t.notice}</div>
-              <Button variant="accent" onClick={() => setSubmitted(true)}>{t.submit}</Button>
-            </div>
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ============================================================
 // Footer
 // ============================================================
 function SiteFooter({ lang }) {
@@ -1008,4 +795,4 @@ function SiteFooter({ lang }) {
 }
 
 // expose
-Object.assign(window, { SiteHeader, Hero, About, Work, Events, News, Gallery, Monday, RegisterModal, SiteFooter });
+Object.assign(window, { SiteHeader, Hero, About, Work, News, Gallery, Monday, SiteFooter });

@@ -1,0 +1,63 @@
+name: Fetch Facebook data
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily at 06:00 UTC
+  workflow_dispatch:        # manual trigger from Actions tab
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch posts and photos from Graph API
+        env:
+          FB_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          FB_PAGE:  fraenamammenschetter
+        run: |
+          BASE="https://graph.facebook.com/v19.0"
+          FIELDS_POSTS="id,message,created_time,full_picture,permalink_url,attachments{media_type,media,subattachments,url},reactions.summary(true),comments.summary(true),shares"
+          FIELDS_PHOTOS="id,name,created_time,images,link,album"
+
+          curl -sf \
+            "$BASE/$FB_PAGE/posts?fields=$FIELDS_POSTS&limit=20&access_token=$FB_TOKEN" \
+            -o posts_raw.json
+
+          curl -sf \
+            "$BASE/$FB_PAGE/photos?type=uploaded&fields=$FIELDS_PHOTOS&limit=30&access_token=$FB_TOKEN" \
+            -o photos_raw.json
+
+          python3 - <<'EOF'
+          import json, datetime
+
+          with open("posts_raw.json")  as f: posts_raw  = json.load(f)
+          with open("photos_raw.json") as f: photos_raw = json.load(f)
+
+          out = {
+            "updated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "posts":  posts_raw.get("data",  []),
+            "photos": photos_raw.get("data", []),
+          }
+
+          with open("fb-data.json", "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, indent=2)
+
+          print(f"Wrote {len(out['posts'])} posts, {len(out['photos'])} photos")
+          EOF
+
+      - name: Commit fb-data.json if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add fb-data.json
+          if git diff --cached --quiet; then
+            echo "No changes — skipping commit"
+          else
+            git commit -m "chore: update fb-data.json [skip ci]"
+            git push
+          fi
