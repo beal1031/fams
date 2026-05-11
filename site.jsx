@@ -533,7 +533,7 @@ function Gallery({ lang }) {
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gridAutoRows: "200px", gap: 12,
+            gridAutoRows: "200px", gap: 12, gridTemplateColumns: "repeat(4, 1fr)",
           }}>
             {[0,1,2,3,4,5,6,7].map((i) => (
               <div key={i} style={{ background: "var(--bg-3)", borderRadius: "var(--radius-md)" }} />
@@ -543,17 +543,13 @@ function Gallery({ lang }) {
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gridAutoRows: "180px",
+            gridAutoRows: "200px",
             gap: 12,
           }}>
             {photos.map((p, i) => {
-              const tall = i % 5 === 1;
-              const wide = i === 0;
               const src = (p.images && p.images[0] && p.images[0].source) || "";
               return (
                 <a key={p.id} href={p.link} target="_blank" rel="noopener" style={{
-                  gridColumn: wide ? "span 2" : "span 1",
-                  gridRow: tall ? "span 2" : "span 1",
                   borderRadius: "var(--radius-md)",
                   overflow: "hidden",
                   background: "var(--bg-3)",
