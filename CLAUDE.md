@@ -1,5 +1,14 @@
 # CLAUDE.md — Fraen a Mammen Schëtter
 
+## README maintenance
+
+`README.md` is the public-facing documentation for this project. **Keep it in sync
+with any changes you make.** Specifically:
+- If you add, remove, or rename a file → update the file overview table.
+- If you add or remove a page section → update the sections table.
+- If you change the tech stack, deployment process, or Facebook pipeline → update the relevant section.
+- If you change photo slot counts or recommended sizes → update the photos table.
+
 ## What this is
 
 Static website for **Fraen a Mammen Schëtter (FMS)**, a women's handicraft association

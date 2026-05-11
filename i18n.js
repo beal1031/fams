@@ -47,7 +47,7 @@ const I18N = {
     monday: {
       eyebrow: "Méindes Owes",
       title: "Komm einfach laanscht.",
-      lead: "Och wann's de nach ni eng Maillen gehäkelt hues — mir weisen der gär, wéi et geet. E Patt drénken, schwätzen, schaffen. Op Schoulvakanzen no.",
+      lead: "Och wann's de nach ni eng Maillen gehäkelt hues — mir weisen der gär, wéi et geet. E Patt drénken, schwätzen, schaffen.",
       when: "Méindes · 19h30",
       where: "Veräinslokal Schëtter",
       cta: "Schreif eis e kuerzen Email",
@@ -104,7 +104,7 @@ const I18N = {
     monday: {
       eyebrow: "Montagabend",
       title: "Schauen Sie einfach vorbei.",
-      lead: "Auch wenn Sie noch nie eine Masche gehäkelt haben — wir zeigen es Ihnen gerne. Ein Glas trinken, plaudern, arbeiten. In den Schulferien geschlossen.",
+      lead: "Auch wenn Sie noch nie eine Masche gehäkelt haben — wir zeigen es Ihnen gerne. Ein Glas trinken, plaudern, arbeiten.",
       when: "Montags · 19:30 Uhr",
       where: "Vereinslokal Schuttrange",
       cta: "Schreiben Sie uns eine kurze E-Mail",
@@ -161,7 +161,7 @@ const I18N = {
     monday: {
       eyebrow: "Lundi soir",
       title: "Venez simplement.",
-      lead: "Même si vous n'avez jamais fait de crochet — nous vous montrons volontiers. Un verre, une discussion, un ouvrage. Fermé pendant les vacances scolaires.",
+      lead: "Même si vous n'avez jamais fait de crochet — nous vous montrons volontiers. Un verre, une discussion, un ouvrage.",
       when: "Lundis · 19h30",
       where: "Local de l'association · Schuttrange",
       cta: "Écrivez-nous un petit e-mail",
@@ -218,7 +218,7 @@ const I18N = {
     monday: {
       eyebrow: "Monday evenings",
       title: "Just drop by.",
-      lead: "Even if you've never crocheted a stitch — we'll happily show you. A drink, a chat, some work. Closed during school holidays.",
+      lead: "Even if you've never crocheted a stitch — we'll happily show you. A drink, a chat, some work. ",
       when: "Mondays · 7:30 pm",
       where: "Club room · Schuttrange",
       cta: "Send us a short email",

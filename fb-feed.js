@@ -192,7 +192,7 @@ const FB_PHOTOS_RESPONSE = {
       link: FB_PAGE_URL + "/photos/98994",
       album: { id: "alb_11", name: "Méindes Owes 2025" },
       images: [
-        { source: "https://images.unsplash.com/photo-1606166187734-a4cb74079037?auto=format&fit=crop&w=1400&q=75", width: 1400, height: 1050 },
+        { source: "https://images.unsplash.com/photo-1674802401450-56c5ccbfed7f?auto=format&fit=crop&w=1400&q=75", width: 1400, height: 1050 },
       ],
     },
     {
