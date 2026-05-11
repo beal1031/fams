@@ -4,7 +4,7 @@
 
 const I18N = {
   lb: {
-    nav: { about: "Iwwer eis", news: "News", monday: "Méindes Owes", contact: "Kontakt" },
+    nav: { about: "Iwwer eis", news: "News", gallery: "Galerie", monday: "Méindes Owes", contact: "Kontakt" },
     hero: {
       eyebrow: "Veräin · gegrënnt 1984 · Schëtter",
       title: ["Mir bitzen, häkelen", "a maachen Handaarbecht."],
@@ -61,7 +61,7 @@ const I18N = {
     },
   },
   de: {
-    nav: { about: "Über uns", news: "News", monday: "Montagabend", contact: "Kontakt" },
+    nav: { about: "Über uns", news: "News", gallery: "Galerie", monday: "Montagabend", contact: "Kontakt" },
     hero: {
       eyebrow: "Verein · gegründet 1984 · Schuttrange",
       title: ["Wir nähen, häkeln", "und basteln."],
@@ -118,7 +118,7 @@ const I18N = {
     },
   },
   fr: {
-    nav: { about: "À propos", news: "Actus", monday: "Lundi soir", contact: "Contact" },
+    nav: { about: "À propos", news: "Actus", gallery: "Galerie", monday: "Lundi soir", contact: "Contact" },
     hero: {
       eyebrow: "Association · fondée en 1984 · Schuttrange",
       title: ["Nous cousons, tricotons", "et créons à la main."],
@@ -175,7 +175,7 @@ const I18N = {
     },
   },
   en: {
-    nav: { about: "About", news: "News", monday: "Monday evenings", contact: "Contact" },
+    nav: { about: "About", news: "News", gallery: "Gallery", monday: "Monday evenings", contact: "Contact" },
     hero: {
       eyebrow: "Association · founded 1984 · Schuttrange",
       title: ["We sew, knit", "and craft by hand."],

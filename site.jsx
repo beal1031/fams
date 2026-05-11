@@ -35,6 +35,7 @@ function SiteHeader({ lang, setLang }) {
   const items = [
     { id: "about", label: t.about },
     { id: "news", label: t.news },
+    { id: "gallery", label: t.gallery },
     { id: "monday", label: t.monday },
     { id: "contact", label: t.contact },
   ];
