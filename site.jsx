@@ -252,21 +252,16 @@ function Hero({ lang }) {
           display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: 14,
           height: 360,
         }}>
-          <div style={{ borderRadius: "var(--radius-xl)", overflow: "hidden", background: "var(--bg-3)" }}>
-            <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=1100&q=70"
-                 alt="Hands knitting wool"
-                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          </div>
-          <div style={{ borderRadius: "var(--radius-xl)", overflow: "hidden", background: "var(--bg-3)" }}>
-            <img src="https://images.unsplash.com/photo-1620207418302-439b387441b0?auto=format&fit=crop&w=900&q=70"
-                 alt="Crocheted yarn detail"
-                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          </div>
-          <div style={{ borderRadius: "var(--radius-xl)", overflow: "hidden", background: "var(--bg-3)" }}>
-            <img src="https://images.unsplash.com/photo-1606166187734-a4cb74079037?auto=format&fit=crop&w=900&q=70"
-                 alt="Coloured yarn balls"
-                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          </div>
+          {[
+            { src: "https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=1100&q=70", alt: "Hands knitting wool" },
+            { src: "https://images.unsplash.com/photo-1576562331281-d09e46af9854?auto=format&fit=crop&w=900&q=70",  alt: "Crocheted yarn detail" },
+            { src: "https://images.unsplash.com/photo-1674802401450-56c5ccbfed7f?auto=format&fit=crop&w=900&q=70",  alt: "Coloured yarn balls" },
+          ].map((p, i) => (
+            <div key={i} style={{ borderRadius: "var(--radius-xl)", overflow: "hidden", background: "var(--bg-3)", height: "100%" }}>
+              <img src={p.src} alt={p.alt}
+                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            </div>
+          ))}
         </div>
       </div>
     </section>
