@@ -5,7 +5,7 @@ function Logo({ size = "md" }) {
   const dims = { sm: 36, md: 56, lg: 96 }[size] || 56;
   return (
     <img
-      src="assets/logo-fms-icon.png"
+      src="assets/LogoFraenaMammenSchetter - without´Text.jpg"
       alt="Fraen a Mammen Schëtter"
       width={dims}
       height={dims}
