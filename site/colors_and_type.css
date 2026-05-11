@@ -1,0 +1,206 @@
+/* =============================================================
+   Fraen a Mammen Schëtter — Color & Type Foundations
+   Palette sampled directly from the FMS logo:
+   sage-green hands & wordmark, terracotta heart, cream square.
+   ============================================================= */
+
+/* ---- Webfonts ---------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..800;1,8..60,300..800&family=Nunito:wght@300;400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ---- Brand colors (sampled from logo) ------------------- */
+  --fms-sage-900: #2f3a2a;
+  --fms-sage-800: #424f3a;
+  --fms-sage-700: #5a6a4d;
+  --fms-sage-600: #6b7559;
+  --fms-sage-500: #7f836d;
+  --fms-sage-400: #9ca28a;
+  --fms-sage-300: #c2c6b4;
+  --fms-sage-200: #dcdfd0;
+  --fms-sage-100: #ecede2;
+
+  --fms-terracotta-700: #a76842;
+  --fms-terracotta-600: #c0814f;
+  --fms-terracotta-500: #d49362;
+  --fms-terracotta-400: #dfa67e;
+  --fms-terracotta-300: #ebc1a2;
+  --fms-terracotta-200: #f4dac3;
+  --fms-terracotta-100: #faead9;
+
+  --fms-cream-500: #ebd9b6;
+  --fms-cream-400: #f0e1c4;
+  --fms-cream-300: #f4ead8;
+  --fms-cream-200: #f8f1e3;
+  --fms-cream-100: #fbf6ec;
+  --fms-paper:     #fdfaf2;
+
+  --fms-ink-900: #2a2620;
+  --fms-ink-700: #4a4338;
+  --fms-ink-500: #75695a;
+  --fms-ink-300: #a89c8a;
+  --fms-ink-100: #e4ddcd;
+
+  --fms-white:   #ffffff;
+
+  --fms-berry-500: #a64458;
+  --fms-berry-300: #d39aa6;
+  --fms-berry-100: #f3dde2;
+
+  /* Semantic ------------------------------------------------- */
+  --fg-1: var(--fms-ink-900);
+  --fg-2: var(--fms-ink-700);
+  --fg-3: var(--fms-ink-500);
+  --fg-brand: var(--fms-sage-700);
+  --fg-accent: var(--fms-terracotta-700);
+  --fg-on-sage: var(--fms-cream-200);
+  --fg-on-terracotta: var(--fms-cream-100);
+
+  --bg-1: var(--fms-cream-200);
+  --bg-2: var(--fms-paper);
+  --bg-3: var(--fms-cream-300);
+  --bg-sage: var(--fms-sage-700);
+  --bg-sage-soft: var(--fms-sage-100);
+  --bg-terracotta: var(--fms-terracotta-500);
+  --bg-terracotta-soft: var(--fms-terracotta-100);
+
+  --border-1: var(--fms-sage-200);
+  --border-2: var(--fms-sage-300);
+  --border-strong: var(--fms-sage-600);
+
+  --link: var(--fms-terracotta-700);
+  --link-hover: var(--fms-sage-800);
+
+  /* ---- Type ----------------------------------------------- */
+  --font-serif: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans:  "Nunito", ui-rounded, "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-script:"Caveat", "Brush Script MT", cursive;
+
+  /* Modular scale */
+  --fs-display: 56px;     --lh-display: 1.05;   --tr-display: -0.02em;
+  --fs-h1:      40px;     --lh-h1:      1.12;   --tr-h1:      -0.015em;
+  --fs-h2:      30px;     --lh-h2:      1.18;   --tr-h2:      -0.01em;
+  --fs-h3:      22px;     --lh-h3:      1.25;   --tr-h3:      -0.005em;
+  --fs-h4:      18px;     --lh-h4:      1.3;    --tr-h4:      0;
+  --fs-lead:    20px;     --lh-lead:    1.55;   --tr-lead:    0;
+  --fs-body:    17px;     --lh-body:    1.6;    --tr-body:    0;
+  --fs-small:   15px;     --lh-small:   1.5;
+  --fs-meta:    13px;     --lh-meta:    1.4;    --tr-meta:    0.02em;
+  --fs-eyebrow: 12px;     --lh-eyebrow: 1.2;    --tr-eyebrow: 0.18em;
+
+  /* ---- Spacing & rhythm ---------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- Radii --------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows ------------------------------------------- */
+  --shadow-1: 0 1px 0 rgba(74, 67, 56, 0.04),
+              0 1px 2px rgba(74, 67, 56, 0.06);
+  --shadow-2: 0 1px 0 rgba(74, 67, 56, 0.04),
+              0 4px 12px rgba(74, 67, 56, 0.08);
+  --shadow-3: 0 2px 0 rgba(74, 67, 56, 0.04),
+              0 12px 28px rgba(74, 67, 56, 0.10);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.6),
+                  inset 0 -1px 0 rgba(74,67,56,0.05);
+
+  /* Motion ---------------------------------------------------- */
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-1: 140ms;
+  --dur-2: 240ms;
+  --dur-3: 380ms;
+}
+
+/* =============================================================
+   Semantic element styles
+   ============================================================= */
+
+html, body {
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--fms-sage-800);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: var(--tr-h1); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); letter-spacing: var(--tr-h2); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); letter-spacing: var(--tr-h3); }
+h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); }
+
+.fms-display {
+  font-family: var(--font-serif);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 600;
+  color: var(--fms-sage-800);
+}
+
+.fms-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--fms-sage-700);
+}
+
+.fms-script {
+  font-family: var(--font-script);
+  font-weight: 600;
+  color: var(--fms-terracotta-700);
+}
+
+p { margin: 0 0 1em 0; text-wrap: pretty; max-width: 62ch; }
+
+.fms-lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: var(--fg-2);
+}
+
+a {
+  color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--link) 40%, transparent);
+  transition: color var(--dur-1) var(--ease-soft),
+              text-decoration-color var(--dur-1) var(--ease-soft);
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration-color: var(--link-hover);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-1);
+  margin: var(--space-6) 0;
+}
+
+::selection {
+  background: var(--fms-terracotta-200);
+  color: var(--fms-ink-900);
+}

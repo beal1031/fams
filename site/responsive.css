@@ -1,0 +1,203 @@
+/* =============================================================
+   Mobile / tablet overrides
+   -------------------------------------------------------------
+   Components use inline styles, so these rules need !important to
+   win the cascade. Selectors target section IDs + structural
+   descendants so we don't have to touch the JSX.
+   ============================================================= */
+
+/* ---------- Tablet (≤ 960px) ---------------------------------- */
+@media (max-width: 960px) {
+
+  /* Header — burger replaces inline nav */
+  header > div { padding: 12px 20px !important; }
+  .fms-nav-desktop { display: none !important; }
+  .fms-lang { display: none !important; }
+  .fms-burger { display: inline-flex !important; }
+  .fms-drawer { display: block !important; }
+
+  /* Generic section padding shrink */
+  section { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Hero — photo strip stacks 2+1 */
+  #top h1 { font-size: clamp(34px, 8vw, 52px) !important; }
+  #top > div > div:last-child {
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+    grid-auto-rows: 200px !important;
+  }
+  #top > div > div:last-child > div:first-child {
+    grid-column: span 2 !important;
+    height: 240px !important;
+  }
+
+  /* About — 1 col */
+  #about > div > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  #about h2 { font-size: 30px !important; }
+
+  /* Stats: 4 → 2 */
+  #about > div > div:nth-child(2) {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  #about > div > div:nth-child(2) > div > div:first-child {
+    font-size: 34px !important;
+  }
+
+  /* Work — 2 col photo grid; first cell doesn't span 2 rows */
+  section[style*="cream-300"] > div > div[style*="repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: 200px !important;
+  }
+  section[style*="cream-300"] > div > div[style*="repeat(3"] > div {
+    grid-row: span 1 !important;
+  }
+
+  /* Events — date / photo on top row, content + CTA below */
+  #events article {
+    grid-template-columns: 110px 1fr !important;
+    grid-template-areas:
+      "date  photo"
+      "body  body"
+      "cta   cta" !important;
+    gap: 14px 16px !important;
+  }
+  #events article > div:nth-child(1) { grid-area: date; }
+  #events article > div:nth-child(2) { grid-area: photo; width: 100% !important; height: 90px !important; }
+  #events article > div:nth-child(3) { grid-area: body; }
+  #events article > div:nth-child(4) { grid-area: cta; }
+  #events article > div:nth-child(1) > div:nth-child(2) { font-size: 44px !important; }
+
+  /* News — single column stack */
+  #news > div > div[style*="1.4fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* The "rest" wrapper spans 2 cols in desktop; force back to 1 */
+  #news > div > div > div[style*="span 2"] {
+    grid-column: auto !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Gallery — 2 cols, no spans */
+  #gallery > div > div[style*="repeat(4"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-auto-rows: 160px !important;
+  }
+  #gallery > div > div[style*="repeat(4"] > a {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  /* Monday — stack */
+  #monday > div > div {
+    grid-template-columns: 1fr !important;
+    padding: 36px 28px !important;
+    gap: 28px !important;
+  }
+  #monday h2 { font-size: 32px !important; }
+
+  /* Footer — stack */
+  footer > div > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* News header — stack the heading + follow CTA */
+  #news > div > div:first-child { flex-direction: column !important; align-items: flex-start !important; }
+
+  /* Modal — full-width */
+  /* (already responsive with min(560px, 100%)) */
+}
+
+/* ---------- Phone (≤ 560px) ---------------------------------- */
+@media (max-width: 560px) {
+
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+  section[id]    { padding-top: 36px !important; padding-bottom: 36px !important; }
+
+  /* Header — hide brand subtitle, shrink logo */
+  header a > div > div:nth-child(2),
+  .fms-header-sub { display: none !important; }
+  header a > div > div:nth-child(1) { font-size: 15px !important; }
+
+  /* Hero — single-column photo strip, smaller */
+  #top { padding-top: 24px !important; }
+  #top h1 { font-size: 36px !important; margin: 12px 0 16px !important; }
+  #top p { font-size: 16px !important; }
+  #top > div > div:last-child {
+    margin-top: 36px !important;
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 200px !important;
+  }
+  #top > div > div:last-child > div:first-child {
+    grid-column: auto !important;
+    height: 240px !important;
+  }
+  #top button { font-size: 15px !important; padding: 11px 18px !important; }
+
+  /* About */
+  #about h2 { font-size: 26px !important; }
+  #about p { font-size: 16px !important; }
+  #about > div > div:nth-child(2) {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px !important;
+    margin-top: 32px !important;
+    padding-top: 24px !important;
+  }
+  #about > div > div:nth-child(2) > div > div:first-child {
+    font-size: 28px !important;
+  }
+
+  /* Section H2s — uniform mobile size */
+  section h2 { font-size: 28px !important; }
+  section p  { font-size: 16px !important; }
+
+  /* Work — photos 1 col but shorter */
+  section[style*="cream-300"] > div > div[style*="repeat(3"] {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 220px !important;
+  }
+
+  /* Events — date row + photo stacked, then body, then CTA */
+  #events article {
+    grid-template-columns: 80px 1fr !important;
+    grid-template-areas:
+      "date photo"
+      "body body"
+      "cta  cta" !important;
+    padding: 18px 0 !important;
+  }
+  #events article > div:nth-child(1) > div:nth-child(2) { font-size: 36px !important; }
+  #events article > div:nth-child(2) { height: 70px !important; }
+  #events article h3 { font-size: 19px !important; }
+
+  /* News — full single col, no album-style spans */
+  #news > div > div[style*="1.4fr 1fr 1fr"] { gap: 14px !important; }
+  #news > div > div > div[style*="span 2"] { gap: 14px !important; }
+
+  /* Gallery — single col big tiles */
+  #gallery > div > div[style*="repeat(4"] {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 220px !important;
+    gap: 10px !important;
+  }
+
+  /* Monday */
+  #monday > div > div {
+    padding: 28px 22px !important;
+    border-radius: var(--radius-lg) !important;
+  }
+  #monday h2 { font-size: 26px !important; }
+  #monday p { font-size: 16px !important; }
+
+  /* Footer */
+  footer { padding: 40px 20px 24px !important; }
+  footer > div > div:last-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+}
