@@ -25,12 +25,6 @@ const I18N = {
         { n: "100%", l: "Erléis · karitativ" },
       ],
     },
-    work: {
-      eyebrow: "Wat mir maachen",
-      title: "Häkel, Bitz, Adventskränz a méi.",
-      lead: "Hei e puer Saachen, déi all Méindes um Dësch entstinn — a déi Dir um Adventsmaart oder Ouschtermaart kënnt fannen.",
-      tags: ["Häkelen", "Bitzen", "Stricken", "Adventskränz", "Blummenkoupen", "Tombola-Präisser"],
-    },
     news: {
       eyebrow: "News · vu Facebook",
       title: "Wat lass ass.",
@@ -87,12 +81,6 @@ const I18N = {
         { n: "3–4", l: "Veranstaltungen / Jahr" },
         { n: "100%", l: "Erlös · wohltätig" },
       ],
-    },
-    work: {
-      eyebrow: "Was wir machen",
-      title: "Häkeln, Nähen, Adventskränze und mehr.",
-      lead: "Ein paar Stücke, die jeden Montag am Tisch entstehen — und die Sie auf dem Adventsmarkt oder Ostermarkt finden können.",
-      tags: ["Häkeln", "Nähen", "Stricken", "Adventskränze", "Grabblumen", "Tombola-Preise"],
     },
     news: {
       eyebrow: "News · von Facebook",
@@ -151,12 +139,6 @@ const I18N = {
         { n: "100%", l: "bénéfices · caritatif" },
       ],
     },
-    work: {
-      eyebrow: "Ce que nous faisons",
-      title: "Crochet, couture, couronnes d'Avent…",
-      lead: "Quelques pièces qui naissent chaque lundi sur la table — et que vous pourrez retrouver au marché de l'Avent ou de Pâques.",
-      tags: ["Crochet", "Couture", "Tricot", "Couronnes d'Avent", "Bouquets de tombe", "Lots de tombola"],
-    },
     news: {
       eyebrow: "Actualités · depuis Facebook",
       title: "Ce qui se passe.",
@@ -213,12 +195,6 @@ const I18N = {
         { n: "3–4", l: "events / year" },
         { n: "100%", l: "proceeds · charity" },
       ],
-    },
-    work: {
-      eyebrow: "What we make",
-      title: "Crochet, sewing, Advent wreaths and more.",
-      lead: "A few of the pieces that grow on the table every Monday — and that you'll find on our stand at the Advent or Easter market.",
-      tags: ["Crochet", "Sewing", "Knitting", "Advent wreaths", "Grave-side flowers", "Tombola prizes"],
     },
     news: {
       eyebrow: "News · from Facebook",

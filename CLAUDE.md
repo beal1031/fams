@@ -78,14 +78,14 @@ Actions → "Fetch Facebook data" → Run workflow.
 
 1. **Hero** — tagline + two CTAs (→ News, → Monday)
 2. **About** — founding story + 4 stats
-3. **Work** — photo grid + craft tags
-4. **News** — latest FB posts
-5. **Gallery** — FB album photos
-6. **Monday** — when/where/CTA
-7. **Footer** — contact + legal
+3. **News** — latest FB posts
+4. **Gallery** — FB album photos
+5. **Monday** — when/where/CTA
+6. **Footer** — contact + legal
 
-The **Events** section was intentionally removed (too much maintenance, no real backend).
-Facebook naturally surfaces upcoming events via the News section.
+The **Events** and **Work** sections were intentionally removed (too much maintenance,
+stock photos, no real backend). Facebook naturally surfaces events and craft photos
+via the News and Gallery sections.
 
 ---
 

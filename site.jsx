@@ -318,63 +318,6 @@ function About({ lang }) {
 }
 
 // ============================================================
-// Work
-// ============================================================
-function Work({ lang }) {
-  const t = I18N[lang].work;
-  const photos = [
-    { src: "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=900&q=70", alt: "Knitted hats" },
-    { src: "https://images.unsplash.com/photo-1606166325683-e6deb697d301?auto=format&fit=crop&w=900&q=70", alt: "Crocheted heart" },
-    { src: "https://images.unsplash.com/photo-1606503153255-59d8b8b82176?auto=format&fit=crop&w=900&q=70", alt: "Advent wreath" },
-    { src: "https://images.unsplash.com/photo-1545959570-a94084071b5d?auto=format&fit=crop&w=900&q=70", alt: "Wool blanket detail" },
-    { src: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=900&q=70", alt: "Sewing thread" },
-    { src: "https://images.unsplash.com/photo-1551655510-555dc3be8633?auto=format&fit=crop&w=900&q=70", alt: "Woven texture" },
-  ];
-
-  return (
-    <section style={{ padding: "32px 32px 64px", background: "var(--fms-cream-300)" }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "48px 0" }}>
-        <div className="fms-eyebrow" style={{ color: "var(--fms-terracotta-700)" }}>{t.eyebrow}</div>
-        <h2 style={{
-          fontFamily: "var(--font-serif)", fontWeight: 600,
-          fontSize: 38, lineHeight: 1.1, letterSpacing: "-0.015em",
-          color: "var(--fms-sage-800)", margin: "12px 0 12px", maxWidth: "20ch",
-        }}>{t.title}</h2>
-        <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--fg-2)", maxWidth: "56ch", margin: "0 0 28px" }}>{t.lead}</p>
-
-        {/* Tag chips */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 32 }}>
-          {t.tags.map((tag, i) => (
-            <span key={i} style={{
-              padding: "6px 14px",
-              border: "1px solid var(--fms-sage-300)",
-              borderRadius: 999,
-              fontFamily: "var(--font-sans)", fontSize: 13, fontWeight: 600,
-              color: "var(--fms-sage-800)", background: "var(--fms-paper)",
-            }}>{tag}</span>
-          ))}
-        </div>
-
-        {/* Photo grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridAutoRows: "260px", gap: 14 }}>
-          {photos.map((p, i) => (
-            <div key={i} style={{
-              gridRow: i === 0 ? "span 2" : "span 1",
-              borderRadius: "var(--radius-lg)",
-              overflow: "hidden", background: "var(--bg-3)",
-              boxShadow: "var(--shadow-1)",
-            }}>
-              <img src={p.src} alt={p.alt}
-                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================================
 // News — Facebook page posts
 // ============================================================
 function News({ lang }) {
@@ -795,4 +738,4 @@ function SiteFooter({ lang }) {
 }
 
 // expose
-Object.assign(window, { SiteHeader, Hero, About, Work, News, Gallery, Monday, SiteFooter });
+Object.assign(window, { SiteHeader, Hero, About, News, Gallery, Monday, SiteFooter });
