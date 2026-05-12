@@ -631,53 +631,71 @@ function Gallery({ lang }) {
             background: "rgba(0,0,0,0.88)",
             zIndex: 1000,
             display: "flex", alignItems: "center", justifyContent: "center",
-            padding: "60px 16px 16px",
+            flexDirection: "column",
+            padding: "16px",
             overflow: "auto",
           }}>
-            <div onClick={(e) => e.stopPropagation()} style={{ position: "relative", width: "100%", maxWidth: "calc(100vw - 32px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <button onClick={() => setLightboxIndex(null)} style={{
+              position: "absolute", top: 16, right: 16,
+              background: "rgba(0,0,0,0.6)", color: "white",
+              border: "none", fontSize: 28, width: 44, height: 44,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", borderRadius: 4, padding: 0, zIndex: 10,
+            }}>×</button>
+
+            <div onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "95vw", position: "relative" }}>
               <img
                 src={photos[lightboxIndex].images?.[0]?.source || ""}
                 alt={photos[lightboxIndex].name}
-                style={{ maxWidth: "100%", maxHeight: "calc(100vh - 120px)", objectFit: "contain", display: "block" }}
+                style={{ maxWidth: "100%", maxHeight: "70vh", objectFit: "contain", display: "block" }}
               />
-              <button onClick={() => setLightboxIndex(null)} style={{
-                position: "absolute", top: 16, right: 16,
-                background: "rgba(0,0,0,0.6)", color: "white",
-                border: "none", fontSize: 28, width: 44, height: 44,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: "pointer", borderRadius: 4, padding: 0,
-              }}>×</button>
 
               <button onClick={() => setLightboxIndex((i) => (i - 1 + photos.length) % photos.length)} style={{
-                position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)",
+                position: "absolute", left: -44, top: "50%", transform: "translateY(-50%)",
                 background: "rgba(0,0,0,0.6)", color: "white",
                 border: "none", fontSize: 24, width: 44, height: 44,
-                display: "flex", alignItems: "center", justifyContent: "center",
+                display: window.innerWidth > 560 ? "flex" : "none",
+                alignItems: "center", justifyContent: "center",
                 cursor: "pointer", borderRadius: 4, padding: 0,
               }}>←</button>
 
               <button onClick={() => setLightboxIndex((i) => (i + 1) % photos.length)} style={{
-                position: "absolute", right: 16, top: "50%", transform: "translateY(-50%)",
+                position: "absolute", right: -44, top: "50%", transform: "translateY(-50%)",
                 background: "rgba(0,0,0,0.6)", color: "white",
                 border: "none", fontSize: 24, width: 44, height: 44,
-                display: "flex", alignItems: "center", justifyContent: "center",
+                display: window.innerWidth > 560 ? "flex" : "none",
+                alignItems: "center", justifyContent: "center",
                 cursor: "pointer", borderRadius: 4, padding: 0,
               }}>→</button>
+            </div>
 
-              <div style={{
-                position: "absolute", bottom: 16, left: "50%", transform: "translateX(-50%)",
+            <div style={{ marginTop: 16, display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+              {window.innerWidth <= 560 && (
+                <>
+                  <button onClick={() => setLightboxIndex((i) => (i - 1 + photos.length) % photos.length)} style={{
+                    background: "rgba(0,0,0,0.6)", color: "white",
+                    border: "none", fontSize: 18, padding: "8px 12px",
+                    cursor: "pointer", borderRadius: 4,
+                    fontFamily: "var(--font-sans)",
+                  }}>← Prev</button>
+                  <button onClick={() => setLightboxIndex((i) => (i + 1) % photos.length)} style={{
+                    background: "rgba(0,0,0,0.6)", color: "white",
+                    border: "none", fontSize: 18, padding: "8px 12px",
+                    cursor: "pointer", borderRadius: 4,
+                    fontFamily: "var(--font-sans)",
+                  }}>Next →</button>
+                </>
+              )}
+              <a href="https://www.facebook.com/profile.php?id=61589322673081&sk=photos" target="_blank" rel="noopener" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                padding: "8px 16px", borderRadius: 4,
+                background: "var(--fms-sage-700)", color: "white",
+                fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 500,
+                textDecoration: "none",
               }}>
-                <a href="https://www.facebook.com/profile.php?id=61589322673081&sk=photos" target="_blank" rel="noopener" style={{
-                  display: "inline-flex", alignItems: "center", gap: 8,
-                  padding: "8px 16px", borderRadius: 4,
-                  background: "var(--fms-sage-700)", color: "white",
-                  fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 500,
-                  textDecoration: "none",
-                }}>
-                  <FbGlyph size={13} color="white" />
-                  {t.toGallery}
-                </a>
-              </div>
+                <FbGlyph size={13} color="white" />
+                {t.toGallery}
+              </a>
             </div>
           </div>
         )}
