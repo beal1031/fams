@@ -1,4 +1,4 @@
-/* global React, I18N, FMS_EVENTS, Logo, Button, Field, FB */
+/* global React, I18N, FMS_EVENTS, Logo, FB */
 const { useState, useEffect, useRef } = React;
 
 function FbGlyph({ size = 14, color = "currentColor" }) {
