@@ -19,7 +19,7 @@ jobs:
       - name: Fetch posts and photos from Graph API
         env:
           FB_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
-          FB_PAGE:  1126617727201165
+          FB_PAGE: "1126617727201165"
         run: |
           BASE="https://graph.facebook.com/v19.0"
           FIELDS_POSTS="id,message,created_time,full_picture,permalink_url,attachments{media_type,media,subattachments,url},reactions.summary(true),comments.summary(true),shares"
