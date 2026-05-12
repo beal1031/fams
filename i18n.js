@@ -56,7 +56,7 @@ const I18N = {
       visit: "Komm laanscht",
       visitText: "All Méindes Owes, 19h00, am Veräinslokal — ausser während de Schoulvakanzen. Och Ufänger si wëllkomm.",
       under: "Veräin ënnert dem Daachverband <a href=\"https://acfl.lu/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: inherit; text-decoration: underline; text-underline-offset: 2px;\">ACFL</a> · zënter 1984",
-      legal: "© 1984–present · Fraen a Mammen Schëtter",
+      legal: "© seit 1984 · Fraen a Mammen Schëtter",
     },
   },
   de: {
@@ -112,7 +112,7 @@ const I18N = {
       visit: "Vorbeischauen",
       visitText: "Jeden Montagabend, 19:00 Uhr, im Vereinslokal — außer in den Schulferien. Auch Anfänger sind willkommen.",
       under: "Verein unter dem Dachverband <a href=\"https://acfl.lu/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: inherit; text-decoration: underline; text-underline-offset: 2px;\">ACFL</a> · seit 1984",
-      legal: "© 1984–present · Fraen a Mammen Schëtter",
+      legal: "© seit 1984 · Fraen a Mammen Schëtter",
     },
   },
   fr: {
@@ -168,7 +168,7 @@ const I18N = {
       visit: "Passez nous voir",
       visitText: "Tous les lundis soir, 19h00, au local de l'association — hors vacances scolaires. Même les débutants sont bienvenus.",
       under: "Association sous l'égide de l'<a href=\"https://acfl.lu/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: inherit; text-decoration: underline; text-underline-offset: 2px;\">ACFL</a> · depuis 1984",
-      legal: "© 1984–present · Fraen a Mammen Schëtter",
+      legal: "© depuis 1984 · Fraen a Mammen Schëtter",
     },
   },
   en: {
@@ -224,7 +224,7 @@ const I18N = {
       visit: "Drop by",
       visitText: "Every Monday evening, 7:00 pm, in the club room — except during school holidays. Beginners welcome.",
       under: "Association under the <a href=\"https://acfl.lu/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: inherit; text-decoration: underline; text-underline-offset: 2px;\">ACFL</a> umbrella · since 1984",
-      legal: "© 1984–present · Fraen a Mammen Schëtter",
+      legal: "© since 1984 · Fraen a Mammen Schëtter",
     },
   },
 };
