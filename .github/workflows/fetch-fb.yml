@@ -25,16 +25,18 @@ jobs:
           FIELDS_POSTS="id,message,created_time,full_picture,permalink_url,attachments{media_type,media,subattachments,url},reactions.summary(true),comments.summary(true),shares"
           FIELDS_PHOTOS="id,name,created_time,images,link,album"
 
-          HTTP=$(curl -s -o posts_raw.json -w "%{http_code}" \
+          HTTP=$(curl -sL -o posts_raw.json -w "%{http_code}" \
             "$BASE/$FB_PAGE/posts?fields=$FIELDS_POSTS&limit=10&access_token=$FB_TOKEN")
+          HTTP="${HTTP: -3}"
           if [ "$HTTP" != "200" ]; then
             echo "ERROR: posts fetch returned HTTP $HTTP"
             cat posts_raw.json
             exit 1
           fi
 
-          HTTP=$(curl -s -o photos_raw.json -w "%{http_code}" \
+          HTTP=$(curl -sL -o photos_raw.json -w "%{http_code}" \
             "$BASE/$FB_PAGE/photos?type=uploaded&fields=$FIELDS_PHOTOS&limit=12&access_token=$FB_TOKEN")
+          HTTP="${HTTP: -3}"
           if [ "$HTTP" != "200" ]; then
             echo "ERROR: photos fetch returned HTTP $HTTP"
             cat photos_raw.json
