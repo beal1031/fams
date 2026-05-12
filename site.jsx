@@ -503,6 +503,7 @@ function Gallery({ lang }) {
   const t = I18N[lang].gallery;
   const [photos, setPhotos] = useState(null);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -510,6 +511,10 @@ function Gallery({ lang }) {
       .then((res) => { if (!cancelled) setPhotos(res.data || []); });
     return () => { cancelled = true; };
   }, [lang]);
+
+  useEffect(() => {
+    if (lightboxIndex !== null) setImageLoading(true);
+  }, [lightboxIndex]);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -644,10 +649,27 @@ function Gallery({ lang }) {
             }}>×</button>
 
             <div onClick={(e) => e.stopPropagation()} style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "95vw", position: "relative" }}>
+              {imageLoading && (
+                <div style={{
+                  position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+                  display: "flex", flexDirection: "column", alignItems: "center", gap: 12,
+                }}>
+                  <div style={{
+                    width: 40, height: 40,
+                    border: "3px solid rgba(255,255,255,0.3)",
+                    borderTop: "3px solid white",
+                    borderRadius: "50%",
+                    animation: "spin 1s linear infinite",
+                  }} />
+                  <div style={{ color: "rgba(255,255,255,0.7)", fontSize: 12, fontFamily: "var(--font-sans)" }}>Lädt...</div>
+                </div>
+              )}
               <img
                 src={photos[lightboxIndex].images?.[0]?.source || ""}
                 alt={photos[lightboxIndex].name}
-                style={{ maxWidth: "100%", maxHeight: "70vh", objectFit: "contain", display: "block" }}
+                onLoad={() => setImageLoading(false)}
+                onError={() => setImageLoading(false)}
+                style={{ maxWidth: "100%", maxHeight: "70vh", objectFit: "contain", display: "block", opacity: imageLoading ? 0.5 : 1 }}
               />
 
               <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i - 1 + photos.length) % photos.length); }} style={{
