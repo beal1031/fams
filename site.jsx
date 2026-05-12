@@ -650,7 +650,7 @@ function Gallery({ lang }) {
                 style={{ maxWidth: "100%", maxHeight: "70vh", objectFit: "contain", display: "block" }}
               />
 
-              <button onClick={() => setLightboxIndex((i) => (i - 1 + photos.length) % photos.length)} style={{
+              <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i - 1 + photos.length) % photos.length); }} style={{
                 position: "absolute", left: -44, top: "50%", transform: "translateY(-50%)",
                 background: "rgba(0,0,0,0.6)", color: "white",
                 border: "none", fontSize: 24, width: 44, height: 44,
@@ -659,7 +659,7 @@ function Gallery({ lang }) {
                 cursor: "pointer", borderRadius: 4, padding: 0,
               }}>←</button>
 
-              <button onClick={() => setLightboxIndex((i) => (i + 1) % photos.length)} style={{
+              <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i + 1) % photos.length); }} style={{
                 position: "absolute", right: -44, top: "50%", transform: "translateY(-50%)",
                 background: "rgba(0,0,0,0.6)", color: "white",
                 border: "none", fontSize: 24, width: 44, height: 44,
@@ -669,16 +669,16 @@ function Gallery({ lang }) {
               }}>→</button>
             </div>
 
-            <div style={{ marginTop: 16, display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+            <div style={{ marginTop: 16, display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }} onClick={(e) => e.stopPropagation()}>
               {window.innerWidth <= 560 && (
                 <>
-                  <button onClick={() => setLightboxIndex((i) => (i - 1 + photos.length) % photos.length)} style={{
+                  <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i - 1 + photos.length) % photos.length); }} style={{
                     background: "rgba(0,0,0,0.6)", color: "white",
                     border: "none", fontSize: 18, padding: "8px 12px",
                     cursor: "pointer", borderRadius: 4,
                     fontFamily: "var(--font-sans)",
                   }}>← Prev</button>
-                  <button onClick={() => setLightboxIndex((i) => (i + 1) % photos.length)} style={{
+                  <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i + 1) % photos.length); }} style={{
                     background: "rgba(0,0,0,0.6)", color: "white",
                     border: "none", fontSize: 18, padding: "8px 12px",
                     cursor: "pointer", borderRadius: 4,
