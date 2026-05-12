@@ -47,7 +47,6 @@ components/
   Logo.jsx              SVG logo component
 assets/
   logo-fms-icon.png     Favicon / logo source
-uploads/                Own FMS photos (add here, reference in site.jsx)
 .github/workflows/
   fetch-fb.yml          Hourly Facebook data fetch (at :00)
 .env                    Local dev only — FB_PAGE_ACCESS_TOKEN (gitignored)
@@ -70,16 +69,6 @@ sections work offline without an API token.
 ### Text and translations
 Edit `i18n.js`. All four languages are in one object; keys mirror the section names
 (`hero`, `about`, `news`, `gallery`, `monday`, `footer`).
-
-### Own photos
-Drop files into `uploads/` and replace the Unsplash URLs in `site.jsx`:
-
-| Location in `site.jsx` | Recommended size |
-|------------------------|------------------|
-| `Hero` — strip of 3 images | 1100 × 700 px |
-| `Monday` — 1 side image | 900 × 600 px |
-
-Max ~300 KB per image.
 
 ### Colors and fonts
 Edit CSS custom properties in `colors_and_type.css` under `:root`.
