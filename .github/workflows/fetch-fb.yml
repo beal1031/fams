@@ -19,19 +19,27 @@ jobs:
       - name: Fetch posts and photos from Graph API
         env:
           FB_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
-          FB_PAGE: "61589322673081"
+          FB_PAGE: "1126617727201165"
         run: |
-          BASE="https://graph.facebook.com/v19.0"
+          BASE="https://graph.facebook.com/v22.0"
           FIELDS_POSTS="id,message,created_time,full_picture,permalink_url,attachments{media_type,media,subattachments,url},reactions.summary(true),comments.summary(true),shares"
           FIELDS_PHOTOS="id,name,created_time,images,link,album"
 
-          curl -sf \
-            "$BASE/$FB_PAGE/posts?fields=$FIELDS_POSTS&limit=10&access_token=$FB_TOKEN" \
-            -o posts_raw.json
+          HTTP=$(curl -s -o posts_raw.json -w "%{http_code}" \
+            "$BASE/$FB_PAGE/posts?fields=$FIELDS_POSTS&limit=10&access_token=$FB_TOKEN")
+          if [ "$HTTP" != "200" ]; then
+            echo "ERROR: posts fetch returned HTTP $HTTP"
+            cat posts_raw.json
+            exit 1
+          fi
 
-          curl -sf \
-            "$BASE/$FB_PAGE/photos?type=uploaded&fields=$FIELDS_PHOTOS&limit=12&access_token=$FB_TOKEN" \
-            -o photos_raw.json
+          HTTP=$(curl -s -o photos_raw.json -w "%{http_code}" \
+            "$BASE/$FB_PAGE/photos?type=uploaded&fields=$FIELDS_PHOTOS&limit=12&access_token=$FB_TOKEN")
+          if [ "$HTTP" != "200" ]; then
+            echo "ERROR: photos fetch returned HTTP $HTTP"
+            cat photos_raw.json
+            exit 1
+          fi
 
       - name: Process data with Python
         run: python3 process-fb-data.py
