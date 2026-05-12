@@ -22,8 +22,8 @@ The Facebook page remains the live event feed; the website links to it.
 
 | Layer | Choice |
 |-------|--------|
-| Framework | React 18 via CDN (no build step) |
-| JSX | Babel standalone (transpiles in the browser) |
+| Framework | React 18.3.1 via CDN (no build step) |
+| JSX | Babel 7.29.0 standalone (transpiles in the browser) |
 | CSS | Plain CSS custom properties (`colors_and_type.css`, `responsive.css`) |
 | Translations | `i18n.js` — all strings for LB / DE / FR / EN |
 | Facebook data | `fb-data.json` fetched hourly by GitHub Actions |
@@ -40,6 +40,7 @@ index.html              Entry point — loads scripts, mounts <App />
 site.jsx                All React components (SiteHeader → SiteFooter)
 i18n.js                 All user-facing strings (lb / de / fr / en)
 fb-feed.js              fetchFacebook() helper — reads fb-data.json
+process-fb-data.py      GitHub Actions script — transforms raw FB API data into fb-data.json
 fb-data.json            Generated hourly by GitHub Actions
 colors_and_type.css     Design tokens, typography, base component styles
 responsive.css          Mobile / tablet breakpoints (≤960 px, ≤560 px)
@@ -86,7 +87,7 @@ GitHub Secret: FB_PAGE_ACCESS_TOKEN
         ↓
 .github/workflows/fetch-fb.yml  (hourly, at :00)
         ↓
-Graph API  /{page-id}/posts (limit 10) + /{page-id}/photos (limit 12)
+Graph API v19.0  /{page-id}/posts (limit 10) + /{page-id}/photos (limit 12)
         ↓
 fb-data.json  (committed to repo, served statically)
         ↓
@@ -121,6 +122,14 @@ No build command needed.
 | 4 | Gallery | Facebook album photos |
 | 5 | Monday | When / where / contact CTA |
 | 6 | Footer | Email, address, legal line |
+
+---
+
+## Navigation
+
+**Desktop:** Sticky header with navigation menu + language switcher (lb → de → fr → en)
+
+**Mobile (≤960px):** Hamburger menu opens a drawer with same navigation items
 
 ---
 
