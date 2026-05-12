@@ -45,7 +45,7 @@ index.html              Entry point — loads scripts, mounts <App />
 site.jsx                All React components (SiteHeader → SiteFooter)
 i18n.js                 All user-facing strings (LB / DE / FR / EN)
 fb-feed.js              fetchFacebook() — reads ./fb-data.json
-fb-data.json            Generated daily by GitHub Actions (commit to repo)
+fb-data.json            Generated hourly by GitHub Actions (commit to repo)
 colors_and_type.css     Design tokens, typography, component base styles
 responsive.css          Mobile/tablet breakpoints (≤960px, ≤560px)
 components/
@@ -54,7 +54,7 @@ assets/
   logo-fms-icon.png     Favicon / logo
 uploads/                Own FMS photos go here (not yet populated)
 .github/workflows/
-  fetch-fb.yml          Daily FB data fetch workflow
+  fetch-fb.yml          Hourly FB data fetch workflow (runs at :00 every hour)
 .env                    Local dev only — FB_PAGE_ACCESS_TOKEN (gitignored)
 ```
 
@@ -75,8 +75,8 @@ Three locations to update:
 - `Monday` component — 1 side image
 
 ### Facebook data
-Runs automatically via GitHub Actions. To force a refresh: go to
-Actions → "Fetch Facebook data" → Run workflow.
+Runs automatically via GitHub Actions every hour at :00. To force a refresh: go to
+GitHub Actions → "Fetch Facebook data" → "Run workflow" button.
 
 ### Colors / fonts
 `colors_and_type.css` — change CSS custom properties under `:root`.
@@ -103,7 +103,7 @@ via the News and Gallery sections.
 ```
 GitHub Secret: FB_PAGE_ACCESS_TOKEN
         ↓
-.github/workflows/fetch-fb.yml  (runs daily 06:00 UTC)
+.github/workflows/fetch-fb.yml  (runs every hour at :00)
         ↓
 Graph API: /{page-id}/posts + /{page-id}/photos
         ↓
@@ -127,6 +127,33 @@ The access token **never appears in client-side code**. It lives only in GitHub 
 
 Push to `main` — GitHub Pages picks it up automatically within ~1 minute.
 No build command, no CI needed beyond the FB fetch workflow.
+
+---
+
+## Roadmap
+
+Priority tasks in progress (see `.claude/plans/` for full details):
+
+1. **Facebook Integration** ✓ DONE
+   - Workflow now runs every hour (was daily)
+   - `.env.example` template added for local dev
+   - Once token is verified, real FB data will populate News/Gallery sections
+
+2. **Check & Fix Text Content** (next)
+   - Review all `i18n.js` strings in all 4 languages (lb/de/fr/en)
+   - Verify About, Monday, and Footer sections match real club info
+
+3. **SEO + Favicon** (quick wins)
+   - Add `<meta description>` and Open Graph tags to `index.html`
+   - Verify favicon is properly linked
+
+4. **Replace Stock Photos**
+   - Hero strip: 3 Unsplash URLs → real FMS photos (1100×700 px)
+   - Monday panel: 1 Unsplash URL → real FMS photo (900×600 px)
+   - Create `uploads/` folder for photos
+
+5. **Code Cleanup** (pending decision)
+   - Delete unused `components/Button.jsx` + `Field.jsx` (unless building contact form)
 
 ---
 
