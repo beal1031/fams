@@ -158,11 +158,16 @@ Completed & In Progress:
    - Removed from global declarations in site.jsx
    - Replaced with comprehensive **Code Review Findings** (18 issues documented)
 
-### Pending
+5. **Code Review Findings — Priority Fixes** (in Arbeit)
+   - CRITICAL #1 ✓ XSS-Fix (dangerouslySetInnerHTML)
+   - CRITICAL #2 ✓ API-Fehlerbehandlung + Error-UI
+   - CRITICAL #3 offen: Bildladefehler (onError-Handler)
+   - CRITICAL #4 offen: Event-Listener Memory Leak (Lightbox)
+   - HIGH #5 offen: Inline Styles → CSS
+   - HIGH #7 offen: Unbegrenzte Datenmenge (Gallery RAM)
+   - MEDIUM / LOW: noch offen
 
-5. **Code Review Findings — Priority Fixes**
-   - See "Code Review Findings" section below (4 CRITICAL, 3 HIGH, 4 MEDIUM, 7 LOW)
-   - Work through systematically from CRITICAL → LOW
+### Pending
 
 6. **Replace Stock Photos** (waiting on real FMS photos)
    - Hero strip: 3 Unsplash URLs → real FMS photos (1100×700 px)
@@ -183,16 +188,14 @@ should be hardcoded in `site.jsx` or other components.
 
 ### CRITICAL (Sofort beheben)
 
-- [ ] **1. XSS-Risk via dangerouslySetInnerHTML** — site.jsx (Zeilen 811, 839)
+- [x] **1. XSS-Risk via dangerouslySetInnerHTML** — site.jsx (Zeilen 811, 839) ✓ DONE
   - ACFL-Link in Footer verwendet HTML-String statt React-Komponente
-  - Risiko wenn i18n-Daten kompromittiert werden
-  - Fix: `<a href="..." target="_blank" rel="noopener noreferrer">ACFL</a>` statt HTML-String
+  - Fix: `.split("ACFL")` + echtes JSX `<a>` statt dangerouslySetInnerHTML
 
-- [ ] **2. Fehlende API-Fehlerbehandlung** — fb-feed.js (Zeile 234), site.jsx (Zeile 323-330)
-  - `catch (_)` ignoriert Fehler silently
-  - Kein Timeout bei fetch
-  - Error-State in News nicht angezeigt
-  - Fix: Error-Logging, Timeout (8-10s), Error UI rendern
+- [x] **2. Fehlende API-Fehlerbehandlung** — fb-feed.js, site.jsx ✓ DONE
+  - 10s Timeout via AbortController
+  - Explizites Error-Logging statt `catch (_)`
+  - Error-UI in News (terracotta Box + Facebook-Link als Fallback)
 
 - [ ] **3. Bildladefehlbehandlung** — site.jsx (Zeilen 261, 444, 587, 666, 779)
   - `<img>`-Tags haben keine `onError`-Handler
@@ -211,10 +214,8 @@ should be hardcoded in `site.jsx` or other components.
   - Jeder Hover trigert Re-render + DOM-Mutation
   - Fix: CSS-Klassen nutzen + className statt onMouseEnter/Leave
 
-- [ ] **6. Error State UI fehlt** — site.jsx (Zeilen 362-411)
-  - News hat `.error` State aber keine Error-UI
-  - Fehler werden nicht dem User angezeigt
-  - Fix: `if (state.status === "error")` UI mit Retry-Button rendern
+- [x] **6. Error State UI fehlt** — site.jsx ✓ DONE (als Teil von #2)
+  - News zeigt jetzt terracotta Error-Box mit Facebook-Link als Fallback
 
 - [ ] **7. Speicher: Unbegrenzte Datenmenge** — site.jsx (Gallery Zeilen 631-721)
   - Alle Galerie-Bilder müssen im RAM sein
