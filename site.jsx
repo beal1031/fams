@@ -631,13 +631,14 @@ function Gallery({ lang }) {
             background: "rgba(0,0,0,0.88)",
             zIndex: 1000,
             display: "flex", alignItems: "center", justifyContent: "center",
-            padding: "16px",
+            padding: "60px 16px 16px",
+            overflow: "auto",
           }}>
-            <div onClick={(e) => e.stopPropagation()} style={{ position: "relative", maxWidth: "90vw", maxHeight: "85vh" }}>
+            <div onClick={(e) => e.stopPropagation()} style={{ position: "relative", width: "100%", maxWidth: "calc(100vw - 32px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <img
                 src={photos[lightboxIndex].images?.[0]?.source || ""}
                 alt={photos[lightboxIndex].name}
-                style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }}
+                style={{ maxWidth: "100%", maxHeight: "calc(100vh - 120px)", objectFit: "contain", display: "block" }}
               />
               <button onClick={() => setLightboxIndex(null)} style={{
                 position: "absolute", top: 16, right: 16,
