@@ -591,7 +591,7 @@ function Gallery({ lang }) {
         )}
 
         <div style={{ marginTop: 24 }}>
-          <a href={FB.PAGE_URL + "/photos"} target="_blank" rel="noopener" style={{
+          <a href="https://www.facebook.com/profile.php?id=61589322673081&sk=photos" target="_blank" rel="noopener" style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             color: "var(--fms-sage-800)",
             fontFamily: "var(--font-serif)", fontSize: 15, fontWeight: 500,
