@@ -808,7 +808,12 @@ function SiteFooter({ lang }) {
                 <div style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 600, color: "var(--fms-cream-100)" }}>
                   Fraen a Mammen — Schëtter
                 </div>
-                <div style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "var(--fms-cream-300)", marginTop: 4, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.7 }} dangerouslySetInnerHTML={{ __html: t.under }} />
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "var(--fms-cream-300)", marginTop: 4, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.7 }}>
+                  {(() => {
+                    const [before, after] = t.under.split("ACFL");
+                    return <>{before}<a href="https://acfl.lu/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "2px" }}>ACFL</a>{after}</>;
+                  })()}
+                </div>
               </div>
             </div>
           </div>
@@ -836,7 +841,9 @@ function SiteFooter({ lang }) {
           display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12,
         }}>
           <div>{t.legal}</div>
-          <div dangerouslySetInnerHTML={{ __html: "ënnert dem Daachverband <a href=\"https://acfl.lu/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: inherit; text-decoration: underline; text-underline-offset: 2px;\">ACFL</a>" }} />
+          <div>
+            ënnert dem Daachverband <a href="https://acfl.lu/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "2px" }}>ACFL</a>
+          </div>
         </div>
       </div>
     </footer>
