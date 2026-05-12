@@ -21,6 +21,10 @@ is the live event feed; the website links to it.
 
 Live URL: https://beal1031.github.io/fams/
 
+⚠️ **WICHTIG: Wenn die Domain sich ändert**, müssen diese Stellen in `index.html` angepasst werden:
+- `og:url` (Zeile ~10)
+- `og:image` (Zeile ~13) — die vollständige URL zum Logo muss aktualisiert werden
+
 ---
 
 ## Tech stack

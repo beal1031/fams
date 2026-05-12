@@ -345,7 +345,6 @@ function News({ lang }) {
               fontSize: 38, lineHeight: 1.1, letterSpacing: "-0.015em",
               color: "var(--fms-sage-800)", margin: "12px 0 12px", maxWidth: "20ch",
             }}>{t.title}</h2>
-            <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--fg-2)", maxWidth: "56ch", margin: 0 }}>{t.lead}</p>
           </div>
           <a href={FB.PAGE_URL} target="_blank" rel="noopener" style={{
             display: "inline-flex", alignItems: "center", gap: 8,
@@ -539,7 +538,6 @@ function Gallery({ lang }) {
           fontSize: 38, lineHeight: 1.1, letterSpacing: "-0.015em",
           color: "var(--fms-sage-800)", margin: "12px 0 12px", maxWidth: "20ch",
         }}>{t.title}</h2>
-        <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--fg-2)", maxWidth: "56ch", margin: "0 0 32px" }}>{t.lead}</p>
 
         {photos === null ? (
           <div style={{
@@ -810,9 +808,7 @@ function SiteFooter({ lang }) {
                 <div style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 600, color: "var(--fms-cream-100)" }}>
                   Fraen a Mammen — Schëtter
                 </div>
-                <div style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "var(--fms-cream-300)", marginTop: 4, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.7 }}>
-                  {t.under}
-                </div>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: 11, color: "var(--fms-cream-300)", marginTop: 4, letterSpacing: "0.18em", textTransform: "uppercase", opacity: 0.7 }} dangerouslySetInnerHTML={{ __html: t.under }} />
               </div>
             </div>
           </div>
@@ -840,7 +836,7 @@ function SiteFooter({ lang }) {
           display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12,
         }}>
           <div>{t.legal}</div>
-          <div>ënnert dem Daachverband ACFL</div>
+          <div dangerouslySetInnerHTML={{ __html: "ënnert dem Daachverband <a href=\"https://acfl.lu/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: inherit; text-decoration: underline; text-underline-offset: 2px;\">ACFL</a>" }} />
         </div>
       </div>
     </footer>

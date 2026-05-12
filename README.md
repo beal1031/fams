@@ -95,9 +95,9 @@ To trigger it manually: **GitHub → Actions → "Fetch Facebook data" → Run w
 ```
 GitHub Secret: FB_PAGE_ACCESS_TOKEN
         ↓
-.github/workflows/fetch-fb.yml  (daily, 06:00 UTC)
+.github/workflows/fetch-fb.yml  (hourly, at :00)
         ↓
-Graph API  /{page-id}/posts + /{page-id}/photos
+Graph API  /{page-id}/posts (limit 10) + /{page-id}/photos (limit 12)
         ↓
 fb-data.json  (committed to repo, served statically)
         ↓
