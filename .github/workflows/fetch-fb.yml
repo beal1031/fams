@@ -33,23 +33,8 @@ jobs:
             "$BASE/$FB_PAGE/photos?type=uploaded&fields=$FIELDS_PHOTOS&limit=30&access_token=$FB_TOKEN" \
             -o photos_raw.json
 
-          python3 - <<'EOF'
-          import json, datetime
-
-          with open("posts_raw.json")  as f: posts_raw  = json.load(f)
-          with open("photos_raw.json") as f: photos_raw = json.load(f)
-
-          out = {
-            "updated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "posts":  posts_raw.get("data",  []),
-            "photos": photos_raw.get("data", []),
-          }
-
-          with open("fb-data.json", "w", encoding="utf-8") as f:
-            json.dump(out, f, ensure_ascii=False, indent=2)
-
-          print(f"Wrote {len(out['posts'])} posts, {len(out['photos'])} photos")
-          EOF
+      - name: Process data with Python
+        run: python3 process-fb-data.py
 
       - name: Commit fb-data.json if changed
         run: |
