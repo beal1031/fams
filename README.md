@@ -40,7 +40,7 @@ index.html              Entry point — loads scripts, mounts <App />
 site.jsx                All React components (SiteHeader → SiteFooter)
 i18n.js                 All user-facing strings (lb / de / fr / en)
 fb-feed.js              fetchFacebook() helper — reads fb-data.json
-fb-data.json            Generated daily by GitHub Actions
+fb-data.json            Generated hourly by GitHub Actions
 colors_and_type.css     Design tokens, typography, base component styles
 responsive.css          Mobile / tablet breakpoints (≤960 px, ≤560 px)
 components/
@@ -49,7 +49,7 @@ assets/
   logo-fms-icon.png     Favicon / logo source
 uploads/                Own FMS photos (add here, reference in site.jsx)
 .github/workflows/
-  fetch-fb.yml          Daily Facebook data fetch (06:00 UTC)
+  fetch-fb.yml          Hourly Facebook data fetch (at :00)
 .env                    Local dev only — FB_PAGE_ACCESS_TOKEN (gitignored)
 ```
 
