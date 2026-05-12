@@ -41,8 +41,9 @@ const I18N = {
     gallery: {
       eyebrow: "Galerie · vu Facebook",
       title: "Bilder vun de leschten Eventer.",
-      lead: "Direkt vun eisem Facebook-Album — klickt op e Bild fir et grouss op Facebook ze gesinn.",
+      lead: "Direkt vun eisem Facebook-Album — klickt op e Bild fir eng Virschau ze gesinn.",
       viewAll: "Aalbumen op Facebook kucken",
+      toGallery: "Zur Galerie op Facebook",
     },
     monday: {
       eyebrow: "Méindes Owes",
@@ -98,8 +99,9 @@ const I18N = {
     gallery: {
       eyebrow: "Galerie · von Facebook",
       title: "Bilder unserer letzten Events.",
-      lead: "Direkt aus unserem Facebook-Album — klicken Sie auf ein Bild, um es groß auf Facebook zu sehen.",
+      lead: "Direkt aus unserem Facebook-Album — klicken Sie auf ein Bild für eine Vorschau.",
       viewAll: "Alben auf Facebook ansehen",
+      toGallery: "Zur Galerie auf Facebook",
     },
     monday: {
       eyebrow: "Montagabend",
@@ -155,8 +157,9 @@ const I18N = {
     gallery: {
       eyebrow: "Galerie · depuis Facebook",
       title: "Photos de nos derniers événements.",
-      lead: "Directement depuis notre album Facebook — cliquez sur une photo pour la voir en grand sur Facebook.",
+      lead: "Directement depuis notre album Facebook — cliquez sur une photo pour un aperçu.",
       viewAll: "Voir les albums sur Facebook",
+      toGallery: "Voir la galerie sur Facebook",
     },
     monday: {
       eyebrow: "Lundi soir",
@@ -212,8 +215,9 @@ const I18N = {
     gallery: {
       eyebrow: "Gallery · from Facebook",
       title: "Pictures from our recent events.",
-      lead: "Straight from our Facebook album — click a picture to see it large on Facebook.",
+      lead: "Straight from our Facebook album — click a picture for a preview.",
       viewAll: "View albums on Facebook",
+      toGallery: "To Gallery on Facebook",
     },
     monday: {
       eyebrow: "Monday evenings",

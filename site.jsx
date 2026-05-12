@@ -502,6 +502,7 @@ function PostCard({ post, lang, t, featured }) {
 function Gallery({ lang }) {
   const t = I18N[lang].gallery;
   const [photos, setPhotos] = useState(null);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -509,6 +510,17 @@ function Gallery({ lang }) {
       .then((res) => { if (!cancelled) setPhotos(res.data || []); });
     return () => { cancelled = true; };
   }, [lang]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e) => {
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowLeft") setLightboxIndex((i) => (i - 1 + photos.length) % photos.length);
+      if (e.key === "ArrowRight") setLightboxIndex((i) => (i + 1) % photos.length);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxIndex, photos]);
 
   return (
     <section id="gallery" style={{ padding: "64px 32px", scrollMarginTop: 80 }}>
@@ -544,12 +556,13 @@ function Gallery({ lang }) {
             {photos.map((p, i) => {
               const src = (p.images && p.images[0] && p.images[0].source) || "";
               return (
-                <a key={p.id} href={p.link} target="_blank" rel="noopener" style={{
+                <div key={p.id} onClick={() => setLightboxIndex(i)} style={{
                   borderRadius: "var(--radius-md)",
                   overflow: "hidden",
                   background: "var(--bg-3)",
                   display: "block",
                   position: "relative",
+                  cursor: "pointer",
                 }}
                   onMouseEnter={(e) => {
                     const ov = e.currentTarget.querySelector("[data-ov]");
@@ -558,6 +571,14 @@ function Gallery({ lang }) {
                   onMouseLeave={(e) => {
                     const ov = e.currentTarget.querySelector("[data-ov]");
                     if (ov) ov.style.opacity = "0";
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setLightboxIndex(i);
+                    }
                   }}
                 >
                   <img src={src} alt={p.name}
@@ -584,7 +605,7 @@ function Gallery({ lang }) {
                       {p.name}
                     </div>
                   </div>
-                </a>
+                </div>
               );
             })}
           </div>
@@ -603,6 +624,62 @@ function Gallery({ lang }) {
             {t.viewAll} →
           </a>
         </div>
+
+        {lightboxIndex !== null && photos && (
+          <div onClick={() => setLightboxIndex(null)} style={{
+            position: "fixed", inset: 0,
+            background: "rgba(0,0,0,0.88)",
+            zIndex: 1000,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            padding: "16px",
+          }}>
+            <div onClick={(e) => e.stopPropagation()} style={{ position: "relative", maxWidth: "90vw", maxHeight: "85vh" }}>
+              <img
+                src={photos[lightboxIndex].images?.[0]?.source || ""}
+                alt={photos[lightboxIndex].name}
+                style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }}
+              />
+              <button onClick={() => setLightboxIndex(null)} style={{
+                position: "absolute", top: 16, right: 16,
+                background: "rgba(0,0,0,0.6)", color: "white",
+                border: "none", fontSize: 28, width: 44, height: 44,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                cursor: "pointer", borderRadius: 4, padding: 0,
+              }}>×</button>
+
+              <button onClick={() => setLightboxIndex((i) => (i - 1 + photos.length) % photos.length)} style={{
+                position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)",
+                background: "rgba(0,0,0,0.6)", color: "white",
+                border: "none", fontSize: 24, width: 44, height: 44,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                cursor: "pointer", borderRadius: 4, padding: 0,
+              }}>←</button>
+
+              <button onClick={() => setLightboxIndex((i) => (i + 1) % photos.length)} style={{
+                position: "absolute", right: 16, top: "50%", transform: "translateY(-50%)",
+                background: "rgba(0,0,0,0.6)", color: "white",
+                border: "none", fontSize: 24, width: 44, height: 44,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                cursor: "pointer", borderRadius: 4, padding: 0,
+              }}>→</button>
+
+              <div style={{
+                position: "absolute", bottom: 16, left: "50%", transform: "translateX(-50%)",
+              }}>
+                <a href="https://www.facebook.com/profile.php?id=61589322673081&sk=photos" target="_blank" rel="noopener" style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  padding: "8px 16px", borderRadius: 4,
+                  background: "var(--fms-sage-700)", color: "white",
+                  fontFamily: "var(--font-sans)", fontSize: 14, fontWeight: 500,
+                  textDecoration: "none",
+                }}>
+                  <FbGlyph size={13} color="white" />
+                  {t.toGallery}
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
