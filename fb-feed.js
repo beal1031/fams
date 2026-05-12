@@ -227,11 +227,31 @@ let _fbDataCache = null;
 async function fetchFacebook(path) {
   if (!_fbDataCache) {
     try {
-      const r = await fetch("./fb-data.json");
-      if (r.ok) {
-        _fbDataCache = await r.json();
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+      try {
+        const r = await fetch("./fb-data.json", { signal: controller.signal });
+        clearTimeout(timeoutId);
+        if (r.ok) {
+          _fbDataCache = await r.json();
+        } else if (r.status === 404) {
+          console.warn("[FB] fb-data.json not found, using mock fallback");
+        } else {
+          console.error(`[FB] fb-data.json fetch failed: ${r.status} ${r.statusText}`);
+          throw new Error(`HTTP ${r.status}`);
+        }
+      } catch (err) {
+        clearTimeout(timeoutId);
+        if (err.name === "AbortError") {
+          console.error("[FB] fb-data.json fetch timed out (10s)");
+          throw new Error("Facebook data fetch timed out");
+        }
+        throw err;
       }
-    } catch (_) { /* file missing — use mock fallback below */ }
+    } catch (err) {
+      console.error("[FB] Failed to load fb-data.json:", err.message);
+      throw err;
+    }
   }
 
   if (_fbDataCache) {

@@ -378,6 +378,29 @@ function News({ lang }) {
           </div>
         )}
 
+        {state.status === "error" && (
+          <div style={{
+            background: "var(--fms-terracotta-100)",
+            border: "1px solid var(--fms-terracotta-300)",
+            borderRadius: "var(--radius-md)",
+            padding: "16px 18px",
+            color: "var(--fms-terracotta-800)",
+            fontSize: 14,
+            lineHeight: 1.5,
+          }}>
+            <strong>Unable to load posts.</strong> {state.error}
+            <div style={{ marginTop: 12 }}>
+              <a href={FB.PAGE_URL} target="_blank" rel="noopener" style={{
+                color: "var(--fms-terracotta-800)",
+                textDecoration: "underline",
+                textUnderlineOffset: "2px",
+              }}>
+                View posts on Facebook →
+              </a>
+            </div>
+          </div>
+        )}
+
         {state.status === "ok" && state.posts.length === 0 && (
           <p style={{ color: "var(--fg-3)", fontStyle: "italic" }}>{t.empty}</p>
         )}
@@ -507,7 +530,8 @@ function Gallery({ lang }) {
   useEffect(() => {
     let cancelled = false;
     FB.fetchFacebook("/" + FB.PAGE_ID + "/photos?type=uploaded&fields=id,name,created_time,images,link,album")
-      .then((res) => { if (!cancelled) setPhotos(res.data || []); });
+      .then((res) => { if (!cancelled) setPhotos(res.data || []); })
+      .catch((err) => { if (!cancelled) setPhotos([]); });
     return () => { cancelled = true; };
   }, [lang]);
 
