@@ -26,7 +26,7 @@ The Facebook page remains the live event feed; the website links to it.
 | JSX | Babel standalone (transpiles in the browser) |
 | CSS | Plain CSS custom properties (`colors_and_type.css`, `responsive.css`) |
 | Translations | `i18n.js` — all strings for LB / DE / FR / EN |
-| Facebook data | `fb-data.json` fetched daily by GitHub Actions |
+| Facebook data | `fb-data.json` fetched hourly by GitHub Actions |
 | Hosting | GitHub Pages — auto-deploys on push to `main` |
 
 **No npm, no bundler.** Open `index.html` in any browser.
@@ -85,7 +85,7 @@ Max ~300 KB per image.
 Edit CSS custom properties in `colors_and_type.css` under `:root`.
 
 ### Facebook data (manual refresh)
-The workflow runs automatically every day at 06:00 UTC.
+The workflow runs automatically every hour at :00.
 To trigger it manually: **GitHub → Actions → "Fetch Facebook data" → Run workflow.**
 
 ---
