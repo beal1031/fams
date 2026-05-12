@@ -136,28 +136,38 @@ No build command, no CI needed beyond the FB fetch workflow.
 
 ## Roadmap
 
-Priority tasks in progress (see `.claude/plans/` for full details):
+Completed & In Progress:
 
 1. **Facebook Integration** ✓ DONE
-   - Workflow now runs every hour (was daily)
-   - `.env.example` template added for local dev
-   - Once token is verified, real FB data will populate News/Gallery sections
+   - Workflow runs every hour (fetches 10 posts, 12 photos)
+   - `fb-data.json` auto-updated via GitHub Actions
+   - News + Gallery sections pull live Facebook data
 
-2. **Check & Fix Text Content** (next)
-   - Review all `i18n.js` strings in all 4 languages (lb/de/fr/en)
-   - Verify About, Monday, and Footer sections match real club info
+2. **Check & Fix Text Content** ✓ DONE
+   - Reviewed all `i18n.js` strings in all 4 languages (lb/de/fr/en)
+   - Refined Luxembourg text for natural flow (removed gallery.lead, news.lead)
+   - Verified About, Monday, Footer match club info
 
-3. **SEO + Favicon** (quick wins)
-   - Add `<meta description>` and Open Graph tags to `index.html`
-   - Verify favicon is properly linked
+3. **SEO + Favicon** ✓ DONE
+   - Added `<meta description>` and Open Graph tags to `index.html`
+   - Favicon properly linked (`assets/logo-fms-icon.png`)
+   - og:image points to logo, og:locale set to lb_LU
 
-4. **Replace Stock Photos**
+4. **Code Cleanup** ✓ DONE (Phase 1)
+   - Deleted unused `components/Button.jsx` + `components/Field.jsx`
+   - Removed from global declarations in site.jsx
+   - Replaced with comprehensive **Code Review Findings** (18 issues documented)
+
+### Pending
+
+5. **Code Review Findings — Priority Fixes**
+   - See "Code Review Findings" section below (4 CRITICAL, 3 HIGH, 4 MEDIUM, 7 LOW)
+   - Work through systematically from CRITICAL → LOW
+
+6. **Replace Stock Photos** (waiting on real FMS photos)
    - Hero strip: 3 Unsplash URLs → real FMS photos (1100×700 px)
    - Monday panel: 1 Unsplash URL → real FMS photo (900×600 px)
-   - Create `uploads/` folder for photos
-
-5. **Code Cleanup** (pending decision)
-   - Delete unused `components/Button.jsx` + `Field.jsx` (unless building contact form)
+   - When photos available: create `uploads/` folder and reference in `site.jsx`
 
 ---
 
