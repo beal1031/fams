@@ -13,8 +13,8 @@
    (local development before the workflow has run).
    ============================================================= */
 
-const FB_PAGE_ID    = "fraenamammenschetter";
-const FB_PAGE_URL   = "https://www.facebook.com/" + FB_PAGE_ID;
+const FB_PAGE_ID    = "61589322673081";
+const FB_PAGE_URL   = "https://www.facebook.com/profile.php?id=" + FB_PAGE_ID;
 const FB_GRAPH_BASE = "https://graph.facebook.com/v19.0";
 
 const FB_POSTS_RESPONSE = {

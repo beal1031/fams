@@ -43,7 +43,7 @@ const I18N = {
       title: "Bilder vun de leschten Eventer.",
       lead: "Direkt vun eisem Facebook-Album — klickt op e Bild fir eng Virschau ze gesinn.",
       viewAll: "Aalbumen op Facebook kucken",
-      toGallery: "Zur Galerie op Facebook",
+      viewPhoto: "Siehe Bild op Facebook",
     },
     monday: {
       eyebrow: "Méindes Owes",
@@ -101,7 +101,7 @@ const I18N = {
       title: "Bilder unserer letzten Events.",
       lead: "Direkt aus unserem Facebook-Album — klicken Sie auf ein Bild für eine Vorschau.",
       viewAll: "Alben auf Facebook ansehen",
-      toGallery: "Zur Galerie auf Facebook",
+      viewPhoto: "Siehe Bild auf Facebook",
     },
     monday: {
       eyebrow: "Montagabend",
@@ -159,7 +159,7 @@ const I18N = {
       title: "Photos de nos derniers événements.",
       lead: "Directement depuis notre album Facebook — cliquez sur une photo pour un aperçu.",
       viewAll: "Voir les albums sur Facebook",
-      toGallery: "Voir la galerie sur Facebook",
+      viewPhoto: "Voir la photo sur Facebook",
     },
     monday: {
       eyebrow: "Lundi soir",
@@ -217,7 +217,7 @@ const I18N = {
       title: "Pictures from our recent events.",
       lead: "Straight from our Facebook album — click a picture for a preview.",
       viewAll: "View albums on Facebook",
-      toGallery: "To Gallery on Facebook",
+      viewPhoto: "See image on Facebook",
     },
     monday: {
       eyebrow: "Monday evenings",

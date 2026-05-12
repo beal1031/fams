@@ -617,7 +617,7 @@ function Gallery({ lang }) {
         )}
 
         <div style={{ marginTop: 24 }}>
-          <a href="https://www.facebook.com/profile.php?id=61589322673081&sk=photos" target="_blank" rel="noopener" style={{
+          <a href={FB.PAGE_URL + "&sk=photos"} target="_blank" rel="noopener" style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             color: "var(--fms-sage-800)",
             fontFamily: "var(--font-serif)", fontSize: 15, fontWeight: 500,
@@ -673,7 +673,7 @@ function Gallery({ lang }) {
               />
 
               <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i - 1 + photos.length) % photos.length); }} style={{
-                position: "absolute", left: -44, top: "50%", transform: "translateY(-50%)",
+                position: "absolute", left: 8, top: "50%", transform: "translateY(-50%)",
                 background: "rgba(0,0,0,0.6)", color: "white",
                 border: "none", fontSize: 24, width: 44, height: 44,
                 display: window.innerWidth > 560 ? "flex" : "none",
@@ -682,7 +682,7 @@ function Gallery({ lang }) {
               }}>←</button>
 
               <button onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i + 1) % photos.length); }} style={{
-                position: "absolute", right: -44, top: "50%", transform: "translateY(-50%)",
+                position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)",
                 background: "rgba(0,0,0,0.6)", color: "white",
                 border: "none", fontSize: 24, width: 44, height: 44,
                 display: window.innerWidth > 560 ? "flex" : "none",
@@ -708,7 +708,7 @@ function Gallery({ lang }) {
                   }}>Next →</button>
                 </>
               )}
-              <a href="https://www.facebook.com/profile.php?id=61589322673081&sk=photos" target="_blank" rel="noopener" style={{
+              <a href={photos[lightboxIndex].link} target="_blank" rel="noopener" style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 padding: "8px 16px", borderRadius: 4,
                 background: "var(--fms-sage-700)", color: "white",
@@ -716,7 +716,7 @@ function Gallery({ lang }) {
                 textDecoration: "none",
               }}>
                 <FbGlyph size={13} color="white" />
-                {t.toGallery}
+                {t.viewPhoto}
               </a>
             </div>
           </div>
