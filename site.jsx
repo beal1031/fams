@@ -253,9 +253,9 @@ function Hero({ lang }) {
           gridAutoRows: 360,
         }}>
           {[
-            { src: "https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=1100&q=70", alt: "Hands knitting wool" },
-            { src: "https://images.unsplash.com/photo-1576562331281-d09e46af9854?auto=format&fit=crop&w=900&q=70",  alt: "Crocheted yarn detail" },
-            { src: "https://images.unsplash.com/photo-1674802401450-56c5ccbfed7f?auto=format&fit=crop&w=900&q=70",  alt: "Coloured yarn balls" },
+            { src: "assets/Pictures/fms-event.jpg", alt: "FMS event at market with stands and participants" },
+            { src: "assets/Pictures/fms-craft.jpg",  alt: "Handmade fabric craft mouse figure" },
+            { src: "assets/Pictures/fms-xmas-decor.jpg",  alt: "FMS Christmas decorations and ornaments" },
           ].map((p, i) => (
             <div key={i} style={{ borderRadius: "var(--radius-xl)", overflow: "hidden", background: "var(--bg-3)" }}>
               <img src={p.src} alt={p.alt}
@@ -296,7 +296,7 @@ function About({ lang }) {
         <div style={{
           marginTop: 56, paddingTop: 32,
           borderTop: "1px solid var(--border-1)",
-          display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24,
+          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24,
         }}>
           {t.stats.map((s, i) => (
             <div key={i}>
@@ -800,7 +800,7 @@ function Monday({ lang }) {
             aspectRatio: "4/5",
             background: "var(--fms-cream-300)",
           }}>
-            <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=900&q=70"
+            <img src="assets/Pictures/stremp.jpeg"
                  alt="Hands working with yarn at a wooden table"
                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>

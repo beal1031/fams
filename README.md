@@ -48,6 +48,7 @@ components/
   Logo.jsx              SVG logo component
 assets/
   logo-fms-icon.png     Favicon / logo source
+  Pictures/             FMS photos (Hero strip and page sections)
 .github/workflows/
   fetch-fb.yml          Hourly Facebook data fetch (at :00)
 .env                    Local dev only — FB_PAGE_ACCESS_TOKEN (gitignored)
@@ -70,6 +71,14 @@ sections work offline without an API token.
 ### Text and translations
 Edit `i18n.js`. All four languages are in one object; keys mirror the section names
 (`hero`, `about`, `news`, `gallery`, `monday`, `footer`).
+
+### Photos
+FMS photos are stored in `assets/Pictures/` and displayed in:
+- **Hero strip** (top of page): 3 photos at ~1100×700 px
+- **Monday section** (side image): 1 photo at ~900×600 px
+
+To replace them, add/update files in `assets/Pictures/` and reference them in `site.jsx`.
+Recommended max size: ~300 KB per image.
 
 ### Colors and fonts
 Edit CSS custom properties in `colors_and_type.css` under `:root`.
