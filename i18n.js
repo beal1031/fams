@@ -45,7 +45,7 @@ const I18N = {
     monday: {
       eyebrow: "Méindes Owes",
       title: "Komm einfach laanscht.",
-      lead: "Och wann's de noch ni eng Strëmp getréckt hues — mir weisen der gär, wéi et geet. E Patt drénken, schwätzen, schaffen.",
+      lead: "Och wann's de nach ni eng Strëmp gestréckt hues — mir weisen der gär, wéi et geet. E Patt drénken, schwätzen, schaffen...",
       when: "Méindes · 19h00 · ausser während de Schoulvakanzen",
       where: "Veräinslokal Schëtter",
       cta: "Schreif eis e kuerzen Email",
@@ -100,7 +100,7 @@ const I18N = {
     monday: {
       eyebrow: "Montagabend",
       title: "Schauen Sie einfach vorbei.",
-      lead: "Auch wenn Sie noch nie einen Strumpf gestrickt haben — wir zeigen es Ihnen gerne. Ein Glas trinken, plaudern, arbeiten.",
+      lead: "Auch wenn Sie noch nie eine Socke gestrickt haben — wir zeigen es Ihnen gerne. Ein Glas trinken, plaudern, arbeiten...",
       when: "Montags · 19:00 Uhr · außer Schulferien",
       where: "Vereinslokal Schuttrange",
       cta: "Schreiben Sie uns eine kurze E-Mail",
@@ -155,7 +155,7 @@ const I18N = {
     monday: {
       eyebrow: "Lundi soir",
       title: "Venez simplement.",
-      lead: "Même si vous n'avez jamais tricoté une chaussette — nous vous montrons volontiers. Un verre, une discussion, un ouvrage.",
+      lead: "Même si vous n'avez jamais tricoté une chaussette — nous vous montrons volontiers. Un verre, une discussion, un ouvrage...",
       when: "Lundis · 19h00 · hors vacances scolaires",
       where: "Local de l'association · Schuttrange",
       cta: "Écrivez-nous un petit e-mail",
