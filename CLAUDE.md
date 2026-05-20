@@ -134,6 +134,49 @@ No build command, no CI needed beyond the FB fetch workflow.
 
 ---
 
+## Google Search Console Setup (When Domain Changes)
+
+**Status:** SEO files (robots.txt, sitemap.xml, JSON-LD schema, canonical tag, Twitter Cards) have been added to the repo (as of 2026-05-20). The site is ready for Google discovery — but it must be registered in Google Search Console to appear in search results.
+
+### When the domain is live
+
+1. **Go to Google Search Console:**
+   - https://search.google.com/search-console
+   - Click "Add property" → enter the new domain URL (e.g., `https://fraen-a-mammen-schetter.lu/`)
+
+2. **Verify ownership (HTML meta tag method):**
+   - Choose "HTML tag" verification method
+   - Copy the `<meta name="google-site-verification" content="...">` tag Google provides
+   - Paste it into `index.html` in the `<head>` section
+   - Click "Verify" in Google Search Console
+
+3. **Submit the sitemap:**
+   - In Google Search Console, go to "Sitemaps"
+   - Enter: `sitemap.xml` (or the full URL if needed)
+   - Google will crawl and index the site
+
+4. **Update `index.html` meta tags when domain changes:**
+   - When moving to the new domain, update these in `index.html`:
+     - `<meta property="og:url">` — change to new domain
+     - `<meta property="og:image">` — ensure logo URL uses new domain
+     - `<link rel="canonical">` — change to new domain
+     - `<link rel="icon">` — may need updating if favicon path changes
+
+### What's already in place
+
+- ✅ `robots.txt` — directs Google to `sitemap.xml`
+- ✅ `sitemap.xml` — single-entry sitemap for the homepage
+- ✅ JSON-LD schema (`@type: NGO`) — helps Google understand the organization
+- ✅ Twitter Card meta tags — better social share previews
+- ✅ Canonical tag — prevents duplicate-content issues
+- ✅ `og:locale` set to `lb_LU` — tells Google the primary language is Luxembourgish
+
+### Timeline
+
+After submission to Google Search Console, the site should appear in search results within **1–2 weeks**.
+
+---
+
 ## Roadmap
 
 Completed & In Progress:
