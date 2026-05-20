@@ -3,7 +3,7 @@
 Static website for **Fraen a Mammen Schëtter (FMS)**, a women's handicraft association
 in Schuttrange, Luxembourg, founded in 1984 under the ACFL umbrella.
 
-Live: **https://beal1031.github.io/fams/**
+Live: **https://fraen-a-mammen-schetter.lu/**
 
 ---
 

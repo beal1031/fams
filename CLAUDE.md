@@ -19,7 +19,7 @@ and all proceeds go to charity.
 The site is a **quiet business card**, not an event management system. The Facebook page
 is the live event feed; the website links to it.
 
-Live URL: https://beal1031.github.io/fams/
+Live URL: https://fraen-a-mammen-schetter.lu/
 
 ⚠️ **WICHTIG: Wenn die Domain sich ändert**, müssen diese Stellen in `index.html` angepasst werden:
 - `og:url` (Zeile ~10)
