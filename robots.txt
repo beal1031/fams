@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://beal1031.github.io/fams/sitemap.xml
